@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="shortcut icon" type="image/x-icon" href="res/post-it.jpg">
+    <title>POST-IT</title>
+    <meta charset=" utf-8">
+    <meta name="viewport " content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css ">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.css ">
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <nav class="navbar fixed-top navbar-expand-md  bg-info navbar-dark" id="navPadding">
+        <div class="container">
+
+            <a class="navbar-brand" href="newTableau.html">
+
+               POST-IT
+            </a>
+
+            <div class="navbar-brand  navbar-right">
+                <a class="navbar-brand" href="index.html"><button type="button" class="btn btn-outline-warning">Déconnecter</button></a>
+            </div>
+
+
+        </div>
+    </nav>
+    <main>
+
+
+
+        <div id="list">
+
+
+        </div>
+
+        <!-- The Modal -->
+        <div class="modal fade" id="myModal">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <p id="TitelModel"></p>
+
+                        <!-- <h4 class="modal-title ">Modal Heading</h4> -->
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+
+
+
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="row">
+                                    <div class="col-md-5" id="infoMombre"></div>
+                                    <div class="col-md-4" id="infoDate"></div>
+                                    <div class="col-md-3" id="infoEtiquette"></div>
+                                </div>
+                                <hr>
+                                <div class="row" id="infoChecklist"></div>
+                                <hr>
+
+
+                            </div>
+                            <div class="col-md-1 ms-auto">
+                                <span class="vertical-line"></span>
+                            </div>
+
+                            <div class="col-md-3 ms-auto">
+                                <h5 style="text-align: center;font-size: 16px;">Ajouter</h5>
+                                <div class="btn-group-vertical" id="btn-group-vertical">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="myModalFermer()">Fermer</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- The Modal Members -->
+        <div class="modal fade" id="Members">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+
+                        <h4 class="modal-title" id="titreGroupBtn">Membres</h4>
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body" id="groupBtn">
+
+                        <input class="form-control" id="myInput" type="text" placeholder="Search..">
+                        <br>
+                        <ul class="list-group" id="myList">
+                            <li class="list-group-item list-group-item-action" id="myList0" onclick="ListMembres(0)">
+
+                                <div class="media">
+                                    <img src="res/img0.png" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:30px;">
+                                    <div class="media-body">
+                                        <p> First item</p>
+
+                                    </div>
+                                </div>
+
+                            </li>
+
+
+                            <li class="list-group-item list-group-item-action" id="myList1" onclick="ListMembres(1)">
+
+                                <div class="media ">
+                                    <img src="res/img1.png" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:30px;">
+                                    <div class="media-body ">
+                                        <p> Second item</p>
+
+                                    </div>
+                                </div>
+
+                            </li>
+                            <li class="list-group-item list-group-item-action" id="myList2" onclick="ListMembres(2)">
+
+                                <div class="media">
+                                    <img src="res/img2.png" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:30px;">
+                                    <div class="media-body">
+                                        <p> Third item</p>
+
+                                    </div>
+                                </div>
+
+                            </li>
+                            <li class="list-group-item list-group-item-action" id="myList3" onclick="ListMembres(3)">
+
+                                <div class="media ">
+                                    <img src="res/img3.png" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:30px;">
+                                    <div class="media-body">
+                                        <p> John</p>
+                                    </div>
+                                </div>
+
+                            </li>
+                        </ul>
+
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" id="btnClose" data-dismiss="modal">Fermer</button>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+        <!-- The Modal Etiquettes -->
+        <div class="modal fade" id="Etiquettes">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+
+                        <h4 class="modal-title" id="titreGroupBtn">Étiquettes</h4>
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body" id="groupBtn">
+                        <ul class="list-group">
+                            <div class="row">
+                                <div class="col-md-12">
+
+                                    <li class="list-group-item list-group-item-action text-white bg-primary" id="color0" onclick="Listcolor(0)">Fini
+                                    </li>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <li class="list-group-item list-group-item-action text-white bg-secondary" id="color1" onclick="Listcolor(1)">En attente
+                                    </li>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <li class="list-group-item list-group-item-action text-white bg-success" id="color2" onclick="Listcolor(2)">Validation
+                                    </li>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <li class="list-group-item list-group-item-action text-white bg-danger " id="color3" onclick="Listcolor(3)">Urgent
+                                    </li>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <li class="list-group-item list-group-item-action text-white bg-warning" id="color4" onclick="Listcolor(4)">Bug
+                                    </li>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <li class="list-group-item list-group-item-action text-white bg-info" id="color5" onclick="Listcolor(5)">Information
+                                    </li>
+                                </div>
+
+                            </div>
+                            <!-- <div class="row">
+                                <div class="col-md-12">
+                                    <li class="list-group-item list-group-item-action text-white bg-dark" id="color6" onclick="Listcolor(6)">ok
+                                    </li>
+                                </div>
+
+                            </div> -->
+                        </ul>
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+        <!-- The Modal Calendrier -->
+        <div class="modal fade" id="calenderier">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+
+                        <h4 class="modal-title" id="titreGroupBtn">Date d'échéance</h4>
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body" id="groupBtn">
+                        <input type="text" class="form-control datepicker" id="txtDate" placeholder="sélectionnez une date">
+
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" onclick="ajouterDate()">Enregistrer</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+
+        <!-- The Modal Text Etiquettes -->
+        <div class="modal fade" id="textEtiquette">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+
+                        <h4 class="modal-title" id="titreGroupBtn">Modifier Étiquette</h4>
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body" id="groupBtn">
+                        <input type="text" class="form-control" id="txtEtiquette" placeholder="Modifier Étiquette...">
+
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" onclick="changeEtiquette()">Enregistrer</button>
+
+                        <button type="button" class="btn btn-danger " data-dismiss="modal">Close</button>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+        <!-- The Modal Ajouter Checklist -->
+        <div class="modal fade" id="addchecklist">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+
+                        <h4 class="modal-title" id="titreGroupBtn"> Ajouter Checklist</h4>
+                        <button type="button" class="close " data-dismiss="modal">×</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body" id="groupBtn">
+                        Titre
+                        <input type="text" class="form-control" id="ajouterChecklist" placeholder="Titre Checklist...">
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" onclick="saveCheklist()">Enregistrer</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+
+
+
+    </main>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- ***********************************DATE********************************* -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+
+    <!-- *************************************************************************** -->
+
+    <script src="js/main.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#myInput ").on("keyup ", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myList li ").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+
+
+
+
+</body>
+
+</html>
